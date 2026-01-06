@@ -1,108 +1,280 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
+
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class CharacterMovement : MonoBehaviour
 {
+
     public float moveSpeed = 6f;
+
+
     public float acceleration = 20f;
     public float deceleration = 20f;
+
+
     public float jumpForce = 12f;
+
+
+    public float gravityScale = 2f;
+
+
     public float jumpCutMultiplier = 0.5f;
+
+
+    public float coyoteTime = 0.2f;
+    float coyoteTimeCounter;
+
 
     public Transform groundCheck;
     public float groundRadius = 0.2f;
     public LayerMask groundLayer;
     public float groundCheckSkin = 0.05f;
 
+
     Rigidbody2D rb;
     Collider2D col;
     PlayerControls controls;
+
 
     Vector2 moveInput;
     bool isGrounded;
     bool canDoubleJump;
 
+
+    Collider2D currentPlatform;
+    bool isFalling = false;
+
+
     void Awake()
     {
+
         controls = new PlayerControls();
+
 
         controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         controls.Player.Move.canceled += ctx => moveInput = Vector2.zero;
 
+
         controls.Player.Jump.performed += ctx => HandleJump();
+
     }
 
-    void OnEnable() => controls.Enable();
-    void OnDisable() => controls.Disable();
+
+    void OnEnable()
+    {
+        controls.Enable();
+    }
+
+    void OnDisable()
+    {
+        controls.Disable();
+    }
+
 
     void Start()
     {
+
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+
+        rb.gravityScale = gravityScale;
+
     }
+
 
     void Update()
     {
+
+        rb.gravityScale = gravityScale;
+
+
         CheckGround();
+
+
+        if (isGrounded)
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter = coyoteTimeCounter - Time.deltaTime;
+        }
+
+
         Move();
 
-        if (!controls.Player.Jump.IsPressed() && rb.linearVelocity.y > 0)
+
+        if (moveInput.y < -0.5f && isGrounded && !isFalling)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
+
+            StartCoroutine(DisableCollision());
+
         }
+
+
+        if (!controls.Player.Jump.IsPressed())
+        {
+
+            if (rb.linearVelocity.y > 0)
+            {
+
+                Vector2 kesikHiz = rb.linearVelocity;
+                kesikHiz.y = kesikHiz.y * jumpCutMultiplier;
+                rb.linearVelocity = kesikHiz;
+
+            }
+
+        }
+
     }
+
 
     void Move()
     {
+
         float targetSpeed = moveInput.x * moveSpeed;
 
         float speedDif = targetSpeed - rb.linearVelocity.x;
-        float accelRate = Mathf.Abs(targetSpeed) > 0.01f ? acceleration : deceleration;
+
+        float accelRate = 0;
+
+
+        if (Mathf.Abs(targetSpeed) > 0.01f)
+        {
+            accelRate = acceleration;
+        }
+        else
+        {
+            accelRate = deceleration;
+        }
+
 
         float movement = speedDif * accelRate * Time.deltaTime;
 
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x + movement, rb.linearVelocity.y);
+
+        Vector2 yeniHiz = rb.linearVelocity;
+        yeniHiz.x = yeniHiz.x + movement;
+        rb.linearVelocity = yeniHiz;
+
     }
+
 
     void HandleJump()
     {
-        if (isGrounded)
+
+        if (coyoteTimeCounter > 0f)
         {
+
             Jump();
+            coyoteTimeCounter = 0f;
+
         }
-        else if (canDoubleJump)
+        else
         {
-            Jump();
-            canDoubleJump = false;
+
+            if (canDoubleJump)
+            {
+                Jump();
+                canDoubleJump = false;
+            }
+
         }
+
     }
+
 
     void Jump()
     {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+
+        Vector2 ziplamaVektoru = rb.linearVelocity;
+
+        ziplamaVektoru.y = jumpForce;
+
+        rb.linearVelocity = ziplamaVektoru;
+
     }
+
 
     void CheckGround()
     {
-        var checkPos = GetGroundCheckPosition();
-        isGrounded = Physics2D.OverlapCircle(checkPos, groundRadius, groundLayer);
+
+        Vector2 checkPos = GetGroundCheckPosition();
+
+        currentPlatform = Physics2D.OverlapCircle(checkPos, groundRadius, groundLayer);
+
+        isGrounded = currentPlatform != null;
+
 
         if (isGrounded)
+        {
             canDoubleJump = true;
+        }
+
     }
+
+
+
+    IEnumerator DisableCollision()
+    {
+
+        isFalling = true;
+
+
+
+        Collider2D geciciPlatform = currentPlatform;
+
+
+        yield return new WaitForSeconds(0.15f);
+
+
+        if (geciciPlatform != null)
+        {
+            Physics2D.IgnoreCollision(col, geciciPlatform, true);
+        }
+
+
+        yield return new WaitForSeconds(0.4f);
+
+
+        if (geciciPlatform != null)
+        {
+            Physics2D.IgnoreCollision(col, geciciPlatform, false);
+        }
+
+
+        isFalling = false;
+
+    }
+
 
     Vector2 GetGroundCheckPosition()
     {
-        if (groundCheck != null && groundCheck != transform)
+
+        if (groundCheck != null)
+        {
             return groundCheck.position;
+        }
+
 
         if (col != null)
         {
-            var downOffset = col.bounds.extents.y + groundCheckSkin;
-            return (Vector2)transform.position + Vector2.down * downOffset;
+            float altOffset = col.bounds.extents.y + groundCheckSkin;
+            return (Vector2)transform.position + Vector2.down * altOffset;
         }
 
+
         return (Vector2)transform.position + Vector2.down * (groundRadius + groundCheckSkin);
+
     }
+
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Vector2 pos = GetGroundCheckPosition();
+        Gizmos.DrawWireSphere(pos, groundRadius);
+    }
+
 }

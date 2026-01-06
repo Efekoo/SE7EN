@@ -133,10 +133,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e160e5a2233bec4aa1404b41c37079c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterMovement
-  moveSpeed: 6
+  moveSpeed: 10
   acceleration: 20
   deceleration: 20
-  jumpForce: 12
+  jumpForce: 20
+  gravityScale: 2
   jumpCutMultiplier: 0.5
   groundCheck: {fileID: 4337519645184977860}
   groundRadius: 0.2

@@ -4,7 +4,12 @@ using System.Collections;
 public class LevelGenerator : MonoBehaviour
 {
 
-    public GameObject platformPrefab;
+    public GameObject normalPlatform;
+    public GameObject movingPlatform;
+    public GameObject collapsePlatform;
+
+
+    public GameObject soulPrefab; 
 
 
     public int numberOfPlatforms = 100;
@@ -15,6 +20,10 @@ public class LevelGenerator : MonoBehaviour
 
     public float minY = 0.5f;
     public float maxY = 1.5f;
+
+
+    public int soulChance = 50;
+    public float soulHeight = 1.0f; 
 
 
     void Start()
@@ -41,7 +50,43 @@ public class LevelGenerator : MonoBehaviour
             spawnPosition.x = rastgeleX;
 
 
-            Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
+           
+            GameObject yeniPlatform = null;
+            int sans = Random.Range(0, 100);
+
+
+            if (sans < 10)
+            {
+                yeniPlatform = Instantiate(movingPlatform, spawnPosition, Quaternion.identity);
+            }
+            else if (sans < 20)
+            {
+                yeniPlatform = Instantiate(collapsePlatform, spawnPosition, Quaternion.identity);
+            }
+            else
+            {
+                yeniPlatform = Instantiate(normalPlatform, spawnPosition, Quaternion.identity);
+            }
+
+
+      
+            int soulSans = Random.Range(0, 100);
+
+            if (soulSans < soulChance)
+            {
+
+                Vector3 soulPozisyonu = spawnPosition;
+
+                soulPozisyonu.y = soulPozisyonu.y + soulHeight;
+
+
+                GameObject yeniSoul = Instantiate(soulPrefab, soulPozisyonu, Quaternion.identity);
+
+
+              
+                yeniSoul.transform.SetParent(yeniPlatform.transform);
+
+            }
 
         }
 
