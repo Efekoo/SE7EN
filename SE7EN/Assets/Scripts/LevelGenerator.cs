@@ -10,6 +10,7 @@ public class LevelGenerator : MonoBehaviour
 
 
     public GameObject soulPrefab; 
+    public GameObject heartPrefab;
 
 
     public int numberOfPlatforms = 100;
@@ -24,6 +25,9 @@ public class LevelGenerator : MonoBehaviour
 
     public int soulChance = 50;
     public float soulHeight = 1.0f; 
+    public int heartChance = 15;
+    public float heartHeight = 1.0f;
+    public float heartXOffsetRange = 0.6f;
 
 
     void Start()
@@ -72,6 +76,7 @@ public class LevelGenerator : MonoBehaviour
       
             int soulSans = Random.Range(0, 100);
 
+            bool soulSpawned = false;
             if (soulSans < soulChance)
             {
 
@@ -85,7 +90,21 @@ public class LevelGenerator : MonoBehaviour
 
               
                 yeniSoul.transform.SetParent(yeniPlatform.transform);
+                soulSpawned = true;
 
+            }
+
+            int heartSans = Random.Range(0, 100);
+
+            if (!soulSpawned && heartPrefab != null && heartSans < heartChance)
+            {
+                Vector3 heartPozisyonu = spawnPosition;
+                heartPozisyonu.x = heartPozisyonu.x + Random.Range(-heartXOffsetRange, heartXOffsetRange);
+                heartPozisyonu.y = heartPozisyonu.y + heartHeight;
+                heartPozisyonu.z = -0.01f;
+
+                GameObject yeniHeart = Instantiate(heartPrefab, heartPozisyonu, Quaternion.identity);
+                yeniHeart.transform.SetParent(yeniPlatform.transform);
             }
 
         }

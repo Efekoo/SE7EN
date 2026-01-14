@@ -42,6 +42,9 @@ public class CharacterMovement : MonoBehaviour
     bool isGrounded;
     bool canDoubleJump;
 
+    public Vector2 MoveInput => moveInput;
+    public bool IsGrounded => isGrounded;
+
 
     Collider2D currentPlatform;
     bool isFalling = false;

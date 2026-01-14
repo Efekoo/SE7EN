@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4377489609934852657}
   - component: {fileID: 5411693909302688028}
   - component: {fileID: 7701595771302569787}
+  - component: {fileID: 6379377373398662621}
   - component: {fileID: 195004424408099694}
   m_Layer: 0
   m_Name: karakter
@@ -29,11 +30,12 @@ Transform:
   m_GameObject: {fileID: 165773598006988869}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.35, y: -3.82, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.427, z: 0}
+  m_LocalScale: {x: 7, y: 7, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7182136897083487860}
+  - {fileID: 7818123456214082108}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4377489609934852657
@@ -83,7 +85,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: -1808982527863717971, guid: da303245ac25d614f9d30abed1fa5763, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,7 +122,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &7701595771302569787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,17 +136,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterMovement
   moveSpeed: 10
-  acceleration: 20
-  deceleration: 20
+  acceleration: 40
+  deceleration: 40
   jumpForce: 20
-  gravityScale: 2
+  gravityScale: 4
   jumpCutMultiplier: 0.5
-  groundCheck: {fileID: 4337519645184977860}
-  groundRadius: 0.2
+  coyoteTime: 0.2
+  groundCheck: {fileID: 7818123456214082108}
+  groundRadius: 0.11
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   groundCheckSkin: 0.05
+--- !u!114 &6379377373398662621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165773598006988869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70009421547847bab64b815d4df0a06d, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterAnimationController
+  spriteRenderer: {fileID: 4377489609934852657}
+  idleFrames:
+  - {fileID: -1808982527863717971, guid: 63759d9cb239e0f4ab31059256932d4f, type: 3}
+  - {fileID: 8115644005664255767, guid: afea75a7d5b7c1242b0dc0d690e1b8c3, type: 3}
+  - {fileID: -1974267942269126528, guid: 1156340fc6f66414bb72d936b6b22c5a, type: 3}
+  - {fileID: 2536910936557558875, guid: d13a3db3092122347bca917ed5c7d9ee, type: 3}
+  walkFrames:
+  - {fileID: -1808982527863717971, guid: 2a467ff4e44307f4eaecb642d640b405, type: 3}
+  - {fileID: 8115644005664255767, guid: f9d9d0299d5b77b41b326812a85d6a89, type: 3}
+  - {fileID: -1974267942269126528, guid: ab7d19ab19d67854182cb4b52c383a63, type: 3}
+  - {fileID: 2536910936557558875, guid: 4b0d0307c4d5e174dbd800fa8a0b48e3, type: 3}
+  - {fileID: 1399413676680894907, guid: 9c19517e870174345bfc558cb36d0033, type: 3}
+  - {fileID: 6636361135747025162, guid: 1417645cd197379419fc74593e5e6b26, type: 3}
+  runFrames:
+  - {fileID: -1808982527863717971, guid: 4cfe9c4ef0d684e47a3adbcd91746385, type: 3}
+  - {fileID: 8115644005664255767, guid: 86b5091252721c641bccec2931936018, type: 3}
+  - {fileID: -1974267942269126528, guid: 5e996145155afb8498f0214ae43a2df8, type: 3}
+  - {fileID: 2536910936557558875, guid: cd32ede064e5c474a929a832a3f2454e, type: 3}
+  crouchFrames:
+  - {fileID: -1808982527863717971, guid: a28f53f5ecf415b4aa27e87f269925f7, type: 3}
+  - {fileID: 8115644005664255767, guid: 7670e42411e0f9f479e7b20bee779880, type: 3}
+  - {fileID: -1974267942269126528, guid: b457ce8b5211c5b45b7b23b883d9815f, type: 3}
+  - {fileID: 2536910936557558875, guid: 9b34aaf17b6a0bf49a0a970c0c9ddfee, type: 3}
+  - {fileID: 1399413676680894907, guid: 8f7acb16f452c4a4b954d18c077ce888, type: 3}
+  jumpSprite: {fileID: 6025261436149066220, guid: a0da36801fcb634419b50bb0d74a774b, type: 3}
+  idleFps: 6
+  walkFps: 10
+  runFps: 12
+  crouchFps: 8
+  runThreshold: 6
+  moveThreshold: 0.1
+  jumpVelocityThreshold: 0.1
 --- !u!61 &195004424408099694
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -179,18 +226,49 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.00084590167, y: 0.0006067082}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 2}
+    oldSize: {x: 0.18, y: 0.38}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.122745365, y: 0.3615774}
   m_EdgeRadius: 0
+--- !u!1 &3942849120737834014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7818123456214082108}
+  m_Layer: 0
+  m_Name: GroundChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7818123456214082108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3942849120737834014}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.17993, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4337519645184977860}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4682313000859191238
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +297,7 @@ Transform:
   m_GameObject: {fileID: 4682313000859191238}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.35, y: 1.8199999, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -260,7 +338,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 14.47
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

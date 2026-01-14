@@ -4,16 +4,23 @@ using UnityEngine.UI;
 public class HealthManager : MonoBehaviour
 {
 
+    public int maxHealth = 5;
+    public int startHealth = 3;
     public int health = 3;
 
 
     public Text healthText;
 
+    void Awake()
+    {
+        health = Mathf.Clamp(startHealth, 0, maxHealth);
+    }
+
 
     public void TakeDamage(int damageAmount)
     {
 
-        health = health - damageAmount;
+        health = Mathf.Max(0, health - damageAmount);
 
         UpdateText();
 
@@ -23,7 +30,7 @@ public class HealthManager : MonoBehaviour
     public void Heal(int healAmount)
     {
 
-        health = health + healAmount;
+        health = Mathf.Min(maxHealth, health + healAmount);
 
         UpdateText();
 
