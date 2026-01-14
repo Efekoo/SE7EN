@@ -550,8 +550,8 @@ MonoBehaviour:
   m_LightType: 4
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.6839622, g: 0.6839622, b: 1, a: 1}
+  m_Intensity: 0.15
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -653,8 +653,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5032721256192220405, guid: dbbc89f4d04949ba842f2226cd0c2301, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.061222177
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032721256192220405, guid: dbbc89f4d04949ba842f2226cd0c2301, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032721256192220405, guid: dbbc89f4d04949ba842f2226cd0c2301, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032721256192220405, guid: dbbc89f4d04949ba842f2226cd0c2301, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.9981242
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032721256192220405, guid: dbbc89f4d04949ba842f2226cd0c2301, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 71
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032721256192220405, guid: dbbc89f4d04949ba842f2226cd0c2301, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -268.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976642864330420705, guid: dbbc89f4d04949ba842f2226cd0c2301, type: 3}
+      propertyPath: m_Intensity
+      value: 951.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976642864330420705, guid: dbbc89f4d04949ba842f2226cd0c2301, type: 3}
+      propertyPath: m_SpotAngle
+      value: 17.565859
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976642864330420705, guid: dbbc89f4d04949ba842f2226cd0c2301, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 17.565859
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1603847166029981532, guid: dbbc89f4d04949ba842f2226cd0c2301, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbbc89f4d04949ba842f2226cd0c2301, type: 3}
@@ -1440,7 +1477,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.1764706, g: 0.26666668, b: 0.40784317, a: 1}
+  m_Color: {r: 0.0627451, g: 0.078431375, b: 0.25490198, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1867,6 +1904,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6379377373398662621, guid: f689246d8ec4dc749af8a11c95538b61, type: 3}
+      propertyPath: jumpFps
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379377373398662621, guid: f689246d8ec4dc749af8a11c95538b61, type: 3}
+      propertyPath: jumpFrames.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379377373398662621, guid: f689246d8ec4dc749af8a11c95538b61, type: 3}
       propertyPath: 'idleFrames.Array.data[0]'
       value: 
       objectReference: {fileID: -1808982527863717971, guid: da303245ac25d614f9d30abed1fa5763, type: 3}
@@ -1882,6 +1927,30 @@ PrefabInstance:
       propertyPath: 'idleFrames.Array.data[3]'
       value: 
       objectReference: {fileID: 2536910936557558875, guid: ec00b420ab1a2a6468575ad78d3f30a2, type: 3}
+    - target: {fileID: 6379377373398662621, guid: f689246d8ec4dc749af8a11c95538b61, type: 3}
+      propertyPath: 'jumpFrames.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2536910936557558875, guid: 7d0df194d05633c4ead270b2114de886, type: 3}
+    - target: {fileID: 6379377373398662621, guid: f689246d8ec4dc749af8a11c95538b61, type: 3}
+      propertyPath: 'jumpFrames.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1399413676680894907, guid: 8b619b93014f2a44192bcb2b5b15fe36, type: 3}
+    - target: {fileID: 6379377373398662621, guid: f689246d8ec4dc749af8a11c95538b61, type: 3}
+      propertyPath: 'jumpFrames.Array.data[2]'
+      value: 
+      objectReference: {fileID: 6636361135747025162, guid: 32b927b207e627f42ab60f9d82fb0726, type: 3}
+    - target: {fileID: 6379377373398662621, guid: f689246d8ec4dc749af8a11c95538b61, type: 3}
+      propertyPath: 'jumpFrames.Array.data[3]'
+      value: 
+      objectReference: {fileID: -3229540774608315921, guid: 98c08615ab5a7dd4fa6550f104ea4da3, type: 3}
+    - target: {fileID: 6379377373398662621, guid: f689246d8ec4dc749af8a11c95538b61, type: 3}
+      propertyPath: 'jumpFrames.Array.data[4]'
+      value: 
+      objectReference: {fileID: -8556153337439913670, guid: 865a8e380690ed04b8d7d66d2a2f8463, type: 3}
+    - target: {fileID: 6379377373398662621, guid: f689246d8ec4dc749af8a11c95538b61, type: 3}
+      propertyPath: 'jumpFrames.Array.data[5]'
+      value: 
+      objectReference: {fileID: 6806514638545688161, guid: f6260c986ea28264897895dda9e4ed48, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

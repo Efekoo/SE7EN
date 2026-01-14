@@ -184,11 +184,21 @@ MonoBehaviour:
   - {fileID: -1974267942269126528, guid: b457ce8b5211c5b45b7b23b883d9815f, type: 3}
   - {fileID: 2536910936557558875, guid: 9b34aaf17b6a0bf49a0a970c0c9ddfee, type: 3}
   - {fileID: 1399413676680894907, guid: 8f7acb16f452c4a4b954d18c077ce888, type: 3}
-  jumpSprite: {fileID: 6025261436149066220, guid: a0da36801fcb634419b50bb0d74a774b, type: 3}
+  jumpFrames:
+  - {fileID: -1808982527863717971, guid: c02e809c9f633d3468aa0af86a91ef8c, type: 3}
+  - {fileID: 8115644005664255767, guid: c12fbf7204692e14bae8a5de6803c2ee, type: 3}
+  - {fileID: -1974267942269126528, guid: 02552738d78cdf14fb04fc03ca397bea, type: 3}
+  - {fileID: 2536910936557558875, guid: 7d0df194d05633c4ead270b2114de886, type: 3}
+  - {fileID: 1399413676680894907, guid: 8b619b93014f2a44192bcb2b5b15fe36, type: 3}
+  - {fileID: 6636361135747025162, guid: 32b927b207e627f42ab60f9d82fb0726, type: 3}
+  - {fileID: -3229540774608315921, guid: 98c08615ab5a7dd4fa6550f104ea4da3, type: 3}
+  - {fileID: -8556153337439913670, guid: 865a8e380690ed04b8d7d66d2a2f8463, type: 3}
+  - {fileID: 6806514638545688161, guid: f6260c986ea28264897895dda9e4ed48, type: 3}
   idleFps: 6
   walkFps: 10
   runFps: 12
   crouchFps: 8
+  jumpFps: 10
   runThreshold: 6
   moveThreshold: 0.1
   jumpVelocityThreshold: 0.1

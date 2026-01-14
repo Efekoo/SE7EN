@@ -9,12 +9,13 @@ public class CharacterAnimationController : MonoBehaviour
     public Sprite[] walkFrames;
     public Sprite[] runFrames;
     public Sprite[] crouchFrames;
-    public Sprite jumpSprite;
+    public Sprite[] jumpFrames;
 
     public float idleFps = 6f;
     public float walkFps = 10f;
     public float runFps = 12f;
     public float crouchFps = 8f;
+    public float jumpFps = 10f;
 
     public float runThreshold = 6f;
     public float moveThreshold = 0.1f;
@@ -66,10 +67,9 @@ public class CharacterAnimationController : MonoBehaviour
             spriteRenderer.flipX = vx > 0f;
         }
 
-        if (jumpSprite != null && (!grounded || Mathf.Abs(vy) > jumpVelocityThreshold))
+        if (jumpFrames != null && jumpFrames.Length > 0 && (!grounded || Mathf.Abs(vy) > jumpVelocityThreshold))
         {
-            SetState(AnimState.Jump);
-            spriteRenderer.sprite = jumpSprite;
+            Animate(AnimState.Jump, jumpFrames, jumpFps);
             return;
         }
 
