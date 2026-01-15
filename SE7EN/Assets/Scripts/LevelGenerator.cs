@@ -4,9 +4,9 @@ using System.Collections;
 public class LevelGenerator : MonoBehaviour
 {
 
-    public GameObject normalPlatform;
-    public GameObject movingPlatform;
-    public GameObject collapsePlatform;
+    public GameObject[] normalPlatforms;
+    public GameObject[] movingPlatforms;
+    public GameObject[] collapsePlatforms;
 
 
     public GameObject soulPrefab; 
@@ -33,7 +33,7 @@ public class LevelGenerator : MonoBehaviour
     void Start()
     {
 
-        if (normalPlatform == null)
+        if (normalPlatforms == null || normalPlatforms.Length == 0)
         {
             return;
         }
@@ -64,17 +64,30 @@ public class LevelGenerator : MonoBehaviour
             int sans = Random.Range(0, 100);
 
 
-            if (sans < 10 && movingPlatform != null)
+            if (sans < 10 && movingPlatforms != null && movingPlatforms.Length > 0)
             {
-                yeniPlatform = Instantiate(movingPlatform, spawnPosition, Quaternion.identity);
+                GameObject movingPlatform = movingPlatforms[Random.Range(0, movingPlatforms.Length)];
+                if (movingPlatform != null)
+                {
+                    yeniPlatform = Instantiate(movingPlatform, spawnPosition, Quaternion.identity);
+                }
             }
-            else if (sans < 20 && collapsePlatform != null)
+            else if (sans < 20 && collapsePlatforms != null && collapsePlatforms.Length > 0)
             {
-                yeniPlatform = Instantiate(collapsePlatform, spawnPosition, Quaternion.identity);
+                GameObject collapsePlatform = collapsePlatforms[Random.Range(0, collapsePlatforms.Length)];
+                if (collapsePlatform != null)
+                {
+                    yeniPlatform = Instantiate(collapsePlatform, spawnPosition, Quaternion.identity);
+                }
             }
             else
             {
-                yeniPlatform = Instantiate(normalPlatform, spawnPosition, Quaternion.identity);
+                int index = Random.Range(0, normalPlatforms.Length);
+                GameObject normalPlatform = normalPlatforms[index];
+                if (normalPlatform != null)
+                {
+                    yeniPlatform = Instantiate(normalPlatform, spawnPosition, Quaternion.identity);
+                }
             }
 
             if (yeniPlatform == null)

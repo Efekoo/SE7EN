@@ -1760,9 +1760,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e13dad3476cd44e9bdd08bf48d17cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelGenerator
-  normalPlatform: {fileID: 7545011100233969170, guid: fc2ff69f7bba44c449326e2ebbc4379a, type: 3}
-  movingPlatform: {fileID: 5071482624621798193, guid: 8975c87b51b39f642b84ac63832a927d, type: 3}
-  collapsePlatform: {fileID: 5354485701300010469, guid: 5c3e0af023c68cf45ae81bbfbffb4a75, type: 3}
+  normalPlatforms:
+  - {fileID: 7545011100233969170, guid: fc2ff69f7bba44c449326e2ebbc4379a, type: 3}
+  - {fileID: 3801173562774806697, guid: 7bfab10ff5fcf1f4e9e6e56e7ebf2b1f, type: 3}
+  - {fileID: 360102201239107492, guid: b4f4e5ae56437dc4f87db6145d53afd0, type: 3}
+  - {fileID: 7947024709704016849, guid: f9d9a7ead2cbdec41aea4f666c75dcbf, type: 3}
+  - {fileID: 455729364137255006, guid: 760da7ce8b9d895418327d0f85b1a44c, type: 3}
+  - {fileID: 5752345767348519170, guid: cc092c1acfc447e44a449dc2fad101ea, type: 3}
+  movingPlatforms:
+  - {fileID: 5071482624621798193, guid: 8975c87b51b39f642b84ac63832a927d, type: 3}
+  collapsePlatforms:
+  - {fileID: 5354485701300010469, guid: 5c3e0af023c68cf45ae81bbfbffb4a75, type: 3}
   soulPrefab: {fileID: 6973433831122725485, guid: ec8be4b30dbd8f94f858bc3471fe4f60, type: 3}
   heartPrefab: {fileID: 7023456789012345678, guid: 682fd68428ad440cbd7d98222077c44a, type: 3}
   numberOfPlatforms: 100
