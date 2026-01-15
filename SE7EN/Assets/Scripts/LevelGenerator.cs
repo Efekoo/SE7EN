@@ -33,6 +33,11 @@ public class LevelGenerator : MonoBehaviour
     void Start()
     {
 
+        if (normalPlatform == null)
+        {
+            return;
+        }
+
         Vector3 spawnPosition = new Vector3();
 
 
@@ -59,11 +64,11 @@ public class LevelGenerator : MonoBehaviour
             int sans = Random.Range(0, 100);
 
 
-            if (sans < 10)
+            if (sans < 10 && movingPlatform != null)
             {
                 yeniPlatform = Instantiate(movingPlatform, spawnPosition, Quaternion.identity);
             }
-            else if (sans < 20)
+            else if (sans < 20 && collapsePlatform != null)
             {
                 yeniPlatform = Instantiate(collapsePlatform, spawnPosition, Quaternion.identity);
             }
@@ -72,12 +77,17 @@ public class LevelGenerator : MonoBehaviour
                 yeniPlatform = Instantiate(normalPlatform, spawnPosition, Quaternion.identity);
             }
 
+            if (yeniPlatform == null)
+            {
+                continue;
+            }
+
 
       
             int soulSans = Random.Range(0, 100);
 
             bool soulSpawned = false;
-            if (soulSans < soulChance)
+            if (soulPrefab != null && soulSans < soulChance)
             {
 
                 Vector3 soulPozisyonu = spawnPosition;

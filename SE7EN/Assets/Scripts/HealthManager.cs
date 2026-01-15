@@ -8,6 +8,8 @@ public class HealthManager : MonoBehaviour
     public int startHealth = 3;
     public int health = 3;
 
+    bool isDead;
+
 
     public Text healthText;
 
@@ -34,6 +36,8 @@ public class HealthManager : MonoBehaviour
 
         UpdateText();
 
+        CheckDeath();
+
     }
 
 
@@ -41,6 +45,7 @@ public class HealthManager : MonoBehaviour
     {
 
         UpdateText();
+        CheckDeath();
 
     }
 
@@ -53,6 +58,22 @@ public class HealthManager : MonoBehaviour
             healthText.text = "Kalp: " + health;
         }
 
+    }
+
+    void CheckDeath()
+    {
+        if (isDead || health > 0)
+        {
+            return;
+        }
+
+        isDead = true;
+
+        GameOverController controller = FindAnyObjectByType<GameOverController>();
+        if (controller != null)
+        {
+            controller.Show();
+        }
     }
 
 }
