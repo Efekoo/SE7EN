@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
-    public string gameplaySceneName = "Gameplay";
+    public string gameplaySceneName = "Level1";
 
     public void StartGame()
     {

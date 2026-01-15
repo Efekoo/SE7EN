@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameOverController : MonoBehaviour
 {
     public GameObject panel;
-    public string gameplaySceneName = "Gameplay";
+    public string gameplaySceneName = "Level1";
     public string mainMenuSceneName = "MainMenu";
 
     public void Show()
