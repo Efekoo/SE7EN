@@ -140,8 +140,10 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8dfa10fa4bfb51468d4a037b8fcddb0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CoinItem
+  m_EditorClassIdentifier: Assembly-CSharp::SoulItem
   pointValue: 1
+  pickupClip: {fileID: 8300000, guid: 57feac682c61a9c43bb1213e4217ee9c, type: 3}
+  pickupVolume: 0.8
 --- !u!1 &8497177219539274587
 GameObject:
   m_ObjectHideFlags: 0
