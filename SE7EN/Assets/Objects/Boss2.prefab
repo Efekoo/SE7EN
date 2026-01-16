@@ -165,7 +165,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.23, y: 0.34}
+    oldSize: {x: 0.17, y: 0.43}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -240,6 +240,7 @@ MonoBehaviour:
   detectionCollider: {fileID: 5800000000}
   attackCollider: {fileID: 6100000001}
   animationController: {fileID: 1140000000}
+  visibilityController: {fileID: 0}
 --- !u!114 &1140000002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,6 +259,7 @@ MonoBehaviour:
   damageVolume: 0.8
   loadNextSceneOnDeath: 0
   nextSceneName: 
+  isFinalBoss: 1
   animationController: {fileID: 1140000000}
   controller: {fileID: 1140000001}
   colliders: []

@@ -34,7 +34,7 @@ public class ScoreManager : MonoBehaviour
 
         if (scoreText != null)
         {
-            scoreText.text = "Skor: " + score;
+            scoreText.text = "Souls: " + score;
         }
 
     }

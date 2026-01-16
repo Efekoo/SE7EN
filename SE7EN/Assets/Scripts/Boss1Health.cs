@@ -9,6 +9,7 @@ public class Boss1Health : MonoBehaviour
     public float damageVolume = 0.8f;
     public bool loadNextSceneOnDeath;
     public string nextSceneName = "";
+    public bool isFinalBoss = false;
 
     public Boss1AnimationController animationController;
     public Boss1Controller controller;
@@ -73,7 +74,15 @@ public class Boss1Health : MonoBehaviour
             }
         }
 
-        if (loadNextSceneOnDeath && !string.IsNullOrEmpty(nextSceneName))
+        if (isFinalBoss)
+        {
+            YouWinScreenController youWinController = FindObjectOfType<YouWinScreenController>();
+            if (youWinController != null)
+            {
+                youWinController.Show();
+            }
+        }
+        else if (loadNextSceneOnDeath && !string.IsNullOrEmpty(nextSceneName))
         {
             SceneManager.LoadScene(nextSceneName, LoadSceneMode.Single);
         }

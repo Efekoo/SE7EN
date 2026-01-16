@@ -8,9 +8,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4962910705847672437, guid: 284470838357b4e498735a76a821c99c, type: 3}
+      propertyPath: m_Size.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -4962910705847672437, guid: 284470838357b4e498735a76a821c99c, type: 3}
+      propertyPath: m_Size.y
+      value: 0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: -4962910705847672437, guid: 284470838357b4e498735a76a821c99c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.33
+      objectReference: {fileID: 0}
+    - target: {fileID: -4962910705847672437, guid: 284470838357b4e498735a76a821c99c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.19
+      objectReference: {fileID: 0}
     - target: {fileID: 1740188775307930352, guid: 284470838357b4e498735a76a821c99c, type: 3}
       propertyPath: m_Name
       value: CollapsingPlatform Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4156636373523388194, guid: 284470838357b4e498735a76a821c99c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4156636373523388194, guid: 284470838357b4e498735a76a821c99c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4156636373523388194, guid: 284470838357b4e498735a76a821c99c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -53,12 +77,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7204351979762059025, guid: 284470838357b4e498735a76a821c99c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1533144847285958802, guid: b88a0f9b0172377459bfee543eb5800d, type: 3}
+    - target: {fileID: 7204351979762059025, guid: 284470838357b4e498735a76a821c99c, type: 3}
       propertyPath: m_Color.b
-      value: 0.5330188
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7204351979762059025, guid: 284470838357b4e498735a76a821c99c, type: 3}
       propertyPath: m_Color.g
-      value: 0.5330188
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7204351979762059025, guid: 284470838357b4e498735a76a821c99c, type: 3}
       propertyPath: m_Color.r
