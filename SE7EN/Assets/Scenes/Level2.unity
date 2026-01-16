@@ -376,6 +376,7 @@ RectTransform:
   m_Children:
   - {fileID: 9100000000000000002}
   - {fileID: 613430439}
+  - {fileID: 9201000000000000002}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -519,6 +520,104 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613430438}
   m_CullTransparentMesh: 1
+--- !u!1 &9201000000000000001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9201000000000000002}
+  - component: {fileID: 9201000000000000003}
+  - component: {fileID: 9201000000000000004}
+  - component: {fileID: 9201000000000000005}
+  m_Layer: 5
+  m_Name: BossHealth
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &9201000000000000002
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9201000000000000001}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 605017217}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -30}
+  m_SizeDelta: {x: 140, y: 28}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!222 &9201000000000000003
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9201000000000000001}
+  m_CullTransparentMesh: 1
+--- !u!114 &9201000000000000004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9201000000000000001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 7998581364765726005, guid: 861521b41a8febc4587fa3d45fede151, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9201000000000000005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9201000000000000001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c18c0ed8f1f4e0d8d4d9cbdc2e5b5d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossHealthUI
+  bossHealth: {fileID: 0}
+  visibilityController: {fileID: 0}
+  healthImage: {fileID: 9201000000000000004}
+  heartStates:
+  - {fileID: -6770287360566765851, guid: 0e331244231060747a9c92ae3e87d523, type: 3}
+  - {fileID: -5392748022063984412, guid: e28cae35d59c4d44b9893df49ca32b8a, type: 3}
+  - {fileID: -1379372760639076997, guid: 8cdd4d0765c028c4a8421466976cf34d, type: 3}
+  - {fileID: 7597157207550726670, guid: 7a404521d4f0f93498b913cce1639d67, type: 3}
+  - {fileID: 7998581364765726005, guid: 861521b41a8febc4587fa3d45fede151, type: 3}
+  hideUntilBossRevealed: 1
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,6 +984,8 @@ MonoBehaviour:
   maxHealth: 5
   startHealth: 3
   health: 3
+  damageClip: {fileID: 8300000, guid: eaa65c360fe4c0e499201d5fe651869e, type: 3}
+  damageVolume: 0.8
   healthText: {fileID: 0}
 --- !u!1 &1200681003
 GameObject:
@@ -1491,6 +1592,8 @@ MonoBehaviour:
   - {fileID: 5354485701300010469, guid: 5c3e0af023c68cf45ae81bbfbffb4a75, type: 3}
   soulPrefab: {fileID: 6973433831122725485, guid: ec8be4b30dbd8f94f858bc3471fe4f60, type: 3}
   heartPrefab: {fileID: 7023456789012345678, guid: 93cf04b58e865e3428ccab89d96eb0a0, type: 3}
+  bossGroundPrefab: {fileID: 687737767180675798, guid: e394f54fc0ea1874b95aeb0f5d29f8cd, type: 3}
+  bossPrefab: {fileID: 1000000000, guid: 617dc5f26ad14be0ae5612919a4275ad, type: 3}
   numberOfPlatforms: 100
   levelWidth: 20
   minY: 1
@@ -1500,6 +1603,8 @@ MonoBehaviour:
   heartChance: 15
   heartHeight: 1
   heartXOffsetRange: 0.6
+  bossGroundYOffset: 2
+  bossSpawnOffset: {x: 0, y: 1, z: 0}
 --- !u!4 &2018754464
 Transform:
   m_ObjectHideFlags: 0
@@ -2131,6 +2236,97 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9100000000000000011}
   m_CullTransparentMesh: 1
+--- !u!1 &4000001000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4000001001}
+  - component: {fileID: 4000001002}
+  - component: {fileID: 4000001003}
+  - component: {fileID: 4000001004}
+  m_Layer: 0
+  m_Name: LevelMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4000001001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4000001000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &4000001002
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4000001000}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 7b7700d5d3304bf4397c272606806fd7, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.106
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+--- !u!82 &4000001003
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4000001000}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 367c7eeb58c53c841be4077b48556f00, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.12
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+--- !u!114 &4000001004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4000001000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4d5c6fd0ab4e3bbf3eb5a9f07a7c7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossMusicController
+  baseMusicSource: {fileID: 4000001002}
+  bossMusicSource: {fileID: 4000001003}
+  visibilityController: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2144,3 +2340,4 @@ SceneRoots:
   - {fileID: 2039463178}
   - {fileID: 145448317}
   - {fileID: 1306067047}
+  - {fileID: 4000001001}

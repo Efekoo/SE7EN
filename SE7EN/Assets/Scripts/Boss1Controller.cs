@@ -14,6 +14,7 @@ public class Boss1Controller : MonoBehaviour
     public Collider2D attackCollider;
 
     public Boss1AnimationController animationController;
+    public BossVisibilityController visibilityController;
 
     Rigidbody2D rb;
     Transform target;
@@ -28,6 +29,11 @@ public class Boss1Controller : MonoBehaviour
         if (animationController == null)
         {
             animationController = GetComponent<Boss1AnimationController>();
+        }
+
+        if (visibilityController == null)
+        {
+            visibilityController = GetComponent<BossVisibilityController>();
         }
 
         EnsureTriggerCollider(detectionCollider);
@@ -133,6 +139,10 @@ public class Boss1Controller : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             target = other.transform;
+            if (visibilityController != null)
+            {
+                visibilityController.Reveal();
+            }
         }
     }
 

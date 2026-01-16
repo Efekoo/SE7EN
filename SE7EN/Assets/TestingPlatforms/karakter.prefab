@@ -233,6 +233,10 @@ MonoBehaviour:
   attackOffset: {x: 0.6, y: 0}
   hitLayers: -1
   attackCooldown: 0.25
+  hitClip: {fileID: 8300000, guid: 47eb0db6fb032854bb6484d514f0a05c, type: 3}
+  missClip: {fileID: 8300000, guid: bcdb7915ce632a24692d4bde0282e910, type: 3}
+  hitVolume: 0.8
+  missVolume: 0.8
   animationController: {fileID: 6379377373398662621}
   spriteRenderer: {fileID: 4377489609934852657}
 --- !u!1 &9000001000

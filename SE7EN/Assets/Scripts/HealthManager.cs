@@ -7,6 +7,8 @@ public class HealthManager : MonoBehaviour
     public int maxHealth = 5;
     public int startHealth = 3;
     public int health = 3;
+    public AudioClip damageClip;
+    public float damageVolume = 0.8f;
 
     bool isDead;
 
@@ -25,6 +27,12 @@ public class HealthManager : MonoBehaviour
         health = Mathf.Max(0, health - damageAmount);
 
         UpdateText();
+        CheckDeath();
+
+        if (damageAmount > 0 && damageClip != null)
+        {
+            AudioSource.PlayClipAtPoint(damageClip, transform.position, damageVolume);
+        }
 
     }
 

@@ -1,9 +1,14 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Boss1Health : MonoBehaviour
 {
     public int maxHealth = 8;
     public int currentHealth = 8;
+    public AudioClip damageClip;
+    public float damageVolume = 0.8f;
+    public bool loadNextSceneOnDeath;
+    public string nextSceneName = "";
 
     public Boss1AnimationController animationController;
     public Boss1Controller controller;
@@ -37,6 +42,10 @@ public class Boss1Health : MonoBehaviour
         }
 
         currentHealth = Mathf.Max(0, currentHealth - amount);
+        if (amount > 0 && damageClip != null)
+        {
+            AudioSource.PlayClipAtPoint(damageClip, transform.position, damageVolume);
+        }
         if (currentHealth == 0)
         {
             Die();
@@ -62,6 +71,11 @@ public class Boss1Health : MonoBehaviour
             {
                 colliders[i].enabled = false;
             }
+        }
+
+        if (loadNextSceneOnDeath && !string.IsNullOrEmpty(nextSceneName))
+        {
+            SceneManager.LoadScene(nextSceneName, LoadSceneMode.Single);
         }
     }
 }

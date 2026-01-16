@@ -7,6 +7,10 @@ public class CharacterAttackController : MonoBehaviour
     public Vector2 attackOffset = new Vector2(0.6f, 0f);
     public LayerMask hitLayers = ~0;
     public float attackCooldown = 0.25f;
+    public AudioClip hitClip;
+    public AudioClip missClip;
+    public float hitVolume = 0.8f;
+    public float missVolume = 0.8f;
 
     public CharacterAnimationController animationController;
     public SpriteRenderer spriteRenderer;
@@ -85,14 +89,23 @@ public class CharacterAttackController : MonoBehaviour
         }
 
         int hitCount = attackCollider.Overlap(hitFilter, hitBuffer);
+        bool hitSomething = false;
         for (int i = 0; i < hitCount; i++)
         {
             Boss1Health boss = hitBuffer[i].GetComponentInParent<Boss1Health>();
             if (boss != null)
             {
                 boss.TakeDamage(1);
+                hitSomething = true;
                 break;
             }
+        }
+
+        AudioClip clipToPlay = hitSomething ? hitClip : missClip;
+        float volume = hitSomething ? hitVolume : missVolume;
+        if (clipToPlay != null)
+        {
+            AudioSource.PlayClipAtPoint(clipToPlay, transform.position, volume);
         }
     }
 }

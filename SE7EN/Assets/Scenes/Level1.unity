@@ -1012,6 +1012,8 @@ MonoBehaviour:
   maxHealth: 5
   startHealth: 3
   health: 3
+  damageClip: {fileID: 8300000, guid: eaa65c360fe4c0e499201d5fe651869e, type: 3}
+  damageVolume: 0.8
   healthText: {fileID: 0}
 --- !u!1 &1200681003
 GameObject:
@@ -2100,6 +2102,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3000000000000000002}
   - component: {fileID: 3000000000000000003}
+  - component: {fileID: 3000000000000000004}
+  - component: {fileID: 3000000000000000005}
   m_Layer: 0
   m_Name: LevelMusic
   m_TagString: Untagged
@@ -2143,6 +2147,42 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
+--- !u!82 &3000000000000000004
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3000000000000000001}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 3add6b055aa8851499d83805e6e8c937, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.12
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+--- !u!114 &3000000000000000005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3000000000000000001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4d5c6fd0ab4e3bbf3eb5a9f07a7c7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossMusicController
+  baseMusicSource: {fileID: 3000000000000000003}
+  bossMusicSource: {fileID: 3000000000000000004}
+  visibilityController: {fileID: 0}
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -2790,6 +2830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossHealthUI
   bossHealth: {fileID: 0}
+  visibilityController: {fileID: 0}
   healthImage: {fileID: 9200000000000000004}
   heartStates:
   - {fileID: -6770287360566765851, guid: 0e331244231060747a9c92ae3e87d523, type: 3}
@@ -2797,6 +2838,7 @@ MonoBehaviour:
   - {fileID: -1379372760639076997, guid: 8cdd4d0765c028c4a8421466976cf34d, type: 3}
   - {fileID: 7597157207550726670, guid: 7a404521d4f0f93498b913cce1639d67, type: 3}
   - {fileID: 7998581364765726005, guid: 861521b41a8febc4587fa3d45fede151, type: 3}
+  hideUntilBossRevealed: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
