@@ -10,12 +10,15 @@ public class CharacterAnimationController : MonoBehaviour
     public Sprite[] runFrames;
     public Sprite[] crouchFrames;
     public Sprite[] jumpFrames;
+    public Sprite[] attackFrames;
 
     public float idleFps = 6f;
     public float walkFps = 10f;
     public float runFps = 12f;
     public float crouchFps = 8f;
     public float jumpFps = 10f;
+    public float attackFps = 12f;
+    public float attackDuration = 0.2f;
 
     public float runThreshold = 6f;
     public float moveThreshold = 0.1f;
@@ -28,6 +31,7 @@ public class CharacterAnimationController : MonoBehaviour
         Run,
         Crouch,
         Jump,
+        Attack,
     }
 
     AnimState state;
@@ -36,6 +40,7 @@ public class CharacterAnimationController : MonoBehaviour
 
     CharacterMovement movement;
     Rigidbody2D rb;
+    float attackTimer;
 
     void Awake()
     {
@@ -52,6 +57,13 @@ public class CharacterAnimationController : MonoBehaviour
     {
         if (spriteRenderer == null || rb == null)
         {
+            return;
+        }
+
+        if (attackTimer > 0f && attackFrames != null && attackFrames.Length > 0)
+        {
+            attackTimer -= Time.deltaTime;
+            Animate(AnimState.Attack, attackFrames, attackFps);
             return;
         }
 
@@ -97,6 +109,17 @@ public class CharacterAnimationController : MonoBehaviour
         {
             Animate(AnimState.Idle, idleFrames, idleFps);
         }
+    }
+
+    public void TriggerAttack()
+    {
+        if (attackFrames == null || attackFrames.Length == 0)
+        {
+            return;
+        }
+
+        attackTimer = Mathf.Max(attackDuration, attackFrames.Length / Mathf.Max(1f, attackFps));
+        Animate(AnimState.Attack, attackFrames, attackFps);
     }
 
     void SetState(AnimState newState)

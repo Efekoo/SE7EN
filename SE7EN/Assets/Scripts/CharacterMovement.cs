@@ -32,6 +32,9 @@ public class CharacterMovement : MonoBehaviour
     public LayerMask groundLayer;
     public float groundCheckSkin = 0.05f;
 
+    public float stepHeight = 0.2f;
+    public float stepCheckDistance = 0.1f;
+    public float stepRayYOffset = 0.02f;
 
     Rigidbody2D rb;
     Collider2D col;
@@ -108,6 +111,8 @@ public class CharacterMovement : MonoBehaviour
 
         Move();
 
+        HandleStepUp();
+
 
         if (moveInput.y < -0.5f && isGrounded && !isFalling)
         {
@@ -161,6 +166,34 @@ public class CharacterMovement : MonoBehaviour
         yeniHiz.x = yeniHiz.x + movement;
         rb.linearVelocity = yeniHiz;
 
+    }
+
+    void HandleStepUp()
+    {
+        if (col == null || !isGrounded)
+        {
+            return;
+        }
+
+        if (Mathf.Abs(moveInput.x) < 0.1f)
+        {
+            return;
+        }
+
+        float direction = Mathf.Sign(moveInput.x);
+        Vector2 dir = new Vector2(direction, 0f);
+
+        Bounds bounds = col.bounds;
+        Vector2 lowerOrigin = new Vector2(bounds.center.x, bounds.min.y + stepRayYOffset);
+        Vector2 upperOrigin = new Vector2(bounds.center.x, bounds.min.y + stepHeight);
+
+        RaycastHit2D lowerHit = Physics2D.Raycast(lowerOrigin, dir, stepCheckDistance, groundLayer);
+        RaycastHit2D upperHit = Physics2D.Raycast(upperOrigin, dir, stepCheckDistance, groundLayer);
+
+        if (lowerHit.collider != null && upperHit.collider == null)
+        {
+            rb.position = new Vector2(rb.position.x, rb.position.y + stepHeight);
+        }
     }
 
 

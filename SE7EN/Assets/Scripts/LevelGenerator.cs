@@ -11,6 +11,8 @@ public class LevelGenerator : MonoBehaviour
 
     public GameObject soulPrefab; 
     public GameObject heartPrefab;
+    public GameObject bossGroundPrefab;
+    public GameObject bossPrefab;
 
 
     public int numberOfPlatforms = 100;
@@ -28,6 +30,8 @@ public class LevelGenerator : MonoBehaviour
     public int heartChance = 15;
     public float heartHeight = 1.0f;
     public float heartXOffsetRange = 0.6f;
+    public float bossGroundYOffset = 2f;
+    public Vector3 bossSpawnOffset = new Vector3(0f, 1f, 0f);
 
 
     void Start()
@@ -45,6 +49,8 @@ public class LevelGenerator : MonoBehaviour
         spawnPosition.y = 0;
         spawnPosition.z = 0;
 
+
+        float highestY = spawnPosition.y;
 
         for (int i = 0; i < numberOfPlatforms; i = i + 1)
         {
@@ -95,6 +101,11 @@ public class LevelGenerator : MonoBehaviour
                 continue;
             }
 
+            if (spawnPosition.y > highestY)
+            {
+                highestY = spawnPosition.y;
+            }
+
 
       
             int soulSans = Random.Range(0, 100);
@@ -130,6 +141,19 @@ public class LevelGenerator : MonoBehaviour
                 yeniHeart.transform.SetParent(yeniPlatform.transform);
             }
 
+        }
+
+        if (bossGroundPrefab != null)
+        {
+            Vector3 bossGroundPosition = new Vector3(0f, highestY + bossGroundYOffset, 0f);
+            GameObject bossGround = Instantiate(bossGroundPrefab, bossGroundPosition, Quaternion.identity);
+
+            if (bossPrefab != null)
+            {
+                Vector3 bossPosition = bossGroundPosition + bossSpawnOffset;
+                GameObject boss = Instantiate(bossPrefab, bossPosition, Quaternion.identity);
+                boss.transform.SetParent(bossGround.transform);
+            }
         }
 
     }
