@@ -1,4 +1,4 @@
-# Seven Layers of Carnage
+# SE7EN
 
 A **2D isometric action-RPG** inspired by Dante's *Inferno*, built in Unity. Fight through layered levels of hell, defeat bosses, loot and craft items, complete quests, and progress deeper with each layer.
 
